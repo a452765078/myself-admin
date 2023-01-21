@@ -14,6 +14,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'quotes': 'off',
-    'space-before-function-paren': 'off'
+    'space-before-function-paren': 'off', 
+    'vue/multi-word-component-names': 'off' //忽略文件名校验
   }
 }
