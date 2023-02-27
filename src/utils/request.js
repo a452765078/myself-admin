@@ -1,22 +1,22 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import store from '@/store/index'
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000
 })
 
-service.interceptors.request.use(
-  config => {
-    // 添加 icode
-    config.headers.icode = '2F84118BF94214FB'
-    // 必须返回 config
-    return config
-  }
-)
+service.interceptors.request.use((config) => {
+  // 添加 icode
+  config.headers.icode = '2F84118BF94214FB'
+  config.headers.Authorization = `Bearer ${store.getters.token}`
+  // 必须返回 config
+  return config
+})
 // 响应拦截器
 service.interceptors.response.use(
-  response => {
+  (response) => {
     const { success, message, data } = response.data
     //   要根据success的成功与否决定下面的操作
     if (success) {
@@ -27,8 +27,9 @@ service.interceptors.response.use(
       return Promise.reject(new Error(message))
     }
   },
-  error => {
+  (error) => {
     // TODO: 将来处理 token 超时问题
+    console.log('error', error)
     ElMessage.error(error.message) // 提示错误信息
     return Promise.reject(error)
   }

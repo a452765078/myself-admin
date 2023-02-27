@@ -12,8 +12,9 @@ router.beforeEach(async (to, from, next) => {
   // 快捷访问
   if (store.getters.token) {
     if (to.path === '/login') {
-      next('/')
+      next()
     } else {
+      // 获取用户信息
       next()
     }
   } else {

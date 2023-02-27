@@ -2,16 +2,26 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const publicRoutes = [
   {
-    path: '/',
-    component: () => import('@/layout/index')
-  },
-  {
     path: '/login',
-    component: () => import(/* webpackChunkName: "login" */'@/views/login/index')
+    component: () =>
+      import(/* webpackChunkName: "login" */ '@/views/login/index')
   },
   {
-    path: '/profile',
-    component: () => import(/* webpackChunkName: "profile" */'@/views/profile/index')
+    path: '/',
+    component: () => import('@/layout/index'),
+    redirect: '/profile',
+    children: [
+      {
+        path: '/profile',
+        component: () =>
+          import(/* webpackChunkName: "profile" */ '@/views/profile/index')
+      },
+      {
+        path: '/chart',
+        component: () =>
+          import(/* webpackChunkName: "profile" */ '@/views/chart/index')
+      }
+    ]
   }
 ]
 

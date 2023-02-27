@@ -1,5 +1,9 @@
 <template>
-  <div class="">Layout 页面</div>
+  <div class="">
+    Layout 页面
+
+    <RouterView></RouterView>
+  </div>
 </template>
 
 <script setup>

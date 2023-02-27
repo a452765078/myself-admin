@@ -9,9 +9,11 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@antv/s2": "^1.42.0",
     "@commitlint/cli": "12.1.4",
     "axios": "^1.2.6",
     "core-js": "^3.8.3",
+    "echarts": "^5.4.1",
     "element-plus": "^1.0.2-beta.28",
     "md5": "^2.3.0",
     "vue": "^3.2.13",
